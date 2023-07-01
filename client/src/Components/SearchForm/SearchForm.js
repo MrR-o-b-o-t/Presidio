@@ -1,9 +1,8 @@
 import React from "react";
 import axios from "axios";
 
-export default function SearchForm() {
+export default function SearchForm(props) {
   const fetchSearchResults = async (query) => {
-    console.log(query);
     try {
       const response = await axios.get(
         `http://localhost:5000/api/search/${query}`
@@ -19,6 +18,7 @@ export default function SearchForm() {
     const searchQuery = e.target.elements.searchInput.value;
     const searchResults = await fetchSearchResults(searchQuery);
     console.log(searchResults);
+    props.updateSearchResults(searchResults);
   };
 
   return (
