@@ -21,7 +21,11 @@ export default function ResultsTable(props) {
                 <tr key={index}>
                   <td>{result.name}</td>
                   <td>{result.snippet}</td>
-                  <td>{result.displayUrl}</td>
+                  <td>
+                    <a href={result.displayUrl} target="blank">
+                      {result.displayUrl}
+                    </a>
+                  </td>
                 </tr>
               ))}
           </tbody>
