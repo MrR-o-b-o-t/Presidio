@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import SearchForm from "../../Components/SearchForm/SearchForm";
 import ResultsTable from "../../Components/ResultsTable/ResultsTable";
+import ChatBox from "../../Components/ChatBox/ChatBox";
 
 export default function Home() {
   const [searchResults, setSearchResults] = useState([]);
@@ -17,11 +18,13 @@ export default function Home() {
 
   return (
     <div className="container-fluid mt-5">
-      <h1>Welcome to the Search App!</h1>
-      <p>Enter a topic to search for information.</p>
-      <button className="btn btn-primary btn-lg">Get Started</button>
+      <div className="text-center">
+        <h1>Welcome to the Search App!</h1>
+        <p>Enter a topic to search for information.</p>
+      </div>
       <SearchForm updateSearchResults={updateSearchResults} />
       <ResultsTable searchResults={searchResults} />
+      <ChatBox />
     </div>
   );
 }

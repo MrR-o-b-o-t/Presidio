@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 export default function SearchForm(props) {
+  const [userInput, setUserInput] = useState("");
   const fetchSearchResults = async (query) => {
     try {
       const response = await axios.get(
@@ -19,6 +20,7 @@ export default function SearchForm(props) {
     const searchResults = await fetchSearchResults(searchQuery);
     console.log(searchResults);
     props.updateSearchResults(searchResults);
+    setUserInput("");
   };
 
   return (
@@ -32,6 +34,10 @@ export default function SearchForm(props) {
           className="form-control"
           id="searchInput"
           placeholder="Enter a topic"
+          value={userInput}
+          onChange={(e) => {
+            setUserInput(e.target.value);
+          }}
         />
       </div>
       <button type="submit" className="btn btn-primary">

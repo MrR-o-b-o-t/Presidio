@@ -3,7 +3,6 @@ const axios = require("axios");
 const cors = require("cors");
 
 require("dotenv").config();
-console.log(process.env.BING_API_KEY);
 const searchController = require("./controllers/searchController");
 
 const app = express();

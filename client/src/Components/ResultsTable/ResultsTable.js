@@ -2,10 +2,11 @@ import React from "react";
 
 export default function ResultsTable(props) {
   const webPages = props.searchResults.webPages?.value;
+  console.log(webPages);
   return (
     <>
       {!webPages || webPages.length === 0 ? (
-        <p>No Results.</p>
+        <p className="text-center">No Results.</p>
       ) : (
         <table className="table table-hover mt-4">
           <thead>
