@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function ChatBox() {
+export default function ChatBox({ userInput }) {
   const [messages, setMessages] = useState([]);
   const [inputText, setInputText] = useState("");
 
@@ -38,26 +38,29 @@ export default function ChatBox() {
 
   return (
     <div className="container">
-      <div className="chat-container">
-        <div className="chat-messages">
-          {messages.map((message, index) => (
-            <div key={index} className={`message ${message.role}`}>
-              {message.content}
-            </div>
-          ))}
-        </div>
-        <form className="chat-form" onSubmit={handleMessageSubmit}>
-          <input
-            type="text"
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            placeholder="Type your message..."
-          />
-          <button className="btn btn-primary" type="submit">
-            Send
-          </button>
-        </form>
+      <div className="">
+        {messages.map((message, index) => (
+          <div key={index} className={`message ${message.role}`}>
+            {message.content}
+          </div>
+        ))}
       </div>
+      <h3>
+        It looks like you are looking for information about {userInput}. Can I
+        help with that?
+      </h3>
+      <form className="" onSubmit={handleMessageSubmit}>
+        <input
+          className="form-control me-2"
+          type="text"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          placeholder="Type your message..."
+        />
+      </form>
+      <button className="btn btn-primary mt-3" type="submit">
+        Send
+      </button>
     </div>
   );
 }

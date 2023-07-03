@@ -3,6 +3,7 @@ import axios from "axios";
 
 export default function SearchForm(props) {
   const [userInput, setUserInput] = useState("");
+
   const fetchSearchResults = async (query) => {
     try {
       const response = await axios.get(
@@ -18,31 +19,29 @@ export default function SearchForm(props) {
     e.preventDefault();
     const searchQuery = e.target.elements.searchInput.value;
     const searchResults = await fetchSearchResults(searchQuery);
-    console.log(searchResults);
-    props.updateSearchResults(searchResults);
+    props.updateSearchResults(searchResults, searchQuery);
     setUserInput("");
   };
 
   return (
-    <form className="container mt-5" onSubmit={handleFormSubmit}>
-      <div className="mb-3">
-        <label htmlFor="searchInput" className="form-label">
-          Enter a topic:
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="searchInput"
-          placeholder="Enter a topic"
-          value={userInput}
-          onChange={(e) => {
-            setUserInput(e.target.value);
-          }}
-        />
-      </div>
-      <button type="submit" className="btn btn-primary">
-        Search
-      </button>
-    </form>
+    <div className="container mt-5">
+      <form onSubmit={handleFormSubmit}>
+        <div>
+          <input
+            type="text"
+            className="form-control"
+            id="searchInput"
+            placeholder="Enter a topic"
+            value={userInput}
+            onChange={(e) => {
+              setUserInput(e.target.value);
+            }}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary mt-3">
+          Search
+        </button>
+      </form>
+    </div>
   );
 }

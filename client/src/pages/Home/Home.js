@@ -6,10 +6,13 @@ import ChatBox from "../../Components/ChatBox/ChatBox";
 
 export default function Home() {
   const [searchResults, setSearchResults] = useState([]);
+  const [dataAvailable, setDataAvailable] = useState(false);
+  const [userInput, setUserInput] = useState("");
 
-  const updateSearchResults = (data) => {
+  const updateSearchResults = (data, criteria) => {
     setSearchResults(data);
-    console.log(data.webPages.value);
+    setDataAvailable(true);
+    setUserInput(criteria);
   };
 
   // useEffect(() => {
@@ -24,7 +27,7 @@ export default function Home() {
       </div>
       <SearchForm updateSearchResults={updateSearchResults} />
       <ResultsTable searchResults={searchResults} />
-      <ChatBox />
+      {dataAvailable && <ChatBox userInput={userInput} />}
     </div>
   );
 }
