@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { sendMessageToAssistant } from "./ChatController";
+
+import "./ChatBox.scss";
 
 export default function ChatBox({ userInput }) {
   const [messages, setMessages] = useState([]);
@@ -14,21 +16,11 @@ export default function ChatBox({ userInput }) {
     setInputText("");
 
     try {
-      const response = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
-        {
-          messages: [...messages, { ...newMessage, role: "assistant" }],
-          model: "gpt-3.5-turbo",
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_CHAT_API_KEY}`,
-            "OpenAI-Organization": `${process.env.REACT_APP_ORG_KEY}`,
-          },
-        }
-      );
-
-      const botReply = response.data.choices[0].message.content;
+      const assistantMessage = { ...newMessage, role: "assistant" };
+      const botReply = await sendMessageToAssistant([
+        ...messages,
+        assistantMessage,
+      ]);
       const botMessage = { content: botReply, role: "assistant" };
       setMessages([...messages, botMessage]);
     } catch (error) {
@@ -37,14 +29,7 @@ export default function ChatBox({ userInput }) {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="">
-        {messages.map((message, index) => (
-          <div key={index} className={`message ${message.role}`}>
-            {message.content}
-          </div>
-        ))}
-      </div>
+    <div className="container mt-5 p-4 bg-primary rounded">
       <h3 className="text-center">
         It looks like you are looking for information about {userInput}. Can I
         help with that?
@@ -61,6 +46,13 @@ export default function ChatBox({ userInput }) {
       <button className="btn btn-primary mt-3" type="submit">
         Send
       </button>
+      <div className="chat-bot-reply">
+        {messages.map((message, index) => (
+          <div key={index} className={`message ${message.role}`}>
+            <strong>Message: </strong> {message.content}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
