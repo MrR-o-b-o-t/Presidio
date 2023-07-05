@@ -43,7 +43,11 @@ export default function ChatBox({ userInput }) {
           placeholder="Type your message..."
         />
       </form>
-      <button className="btn btn-primary mt-3" type="submit">
+      <button
+        className="btn btn-primary mt-3"
+        type="submit"
+        onSubmit={handleMessageSubmit}
+      >
         Send
       </button>
       <div className="chat-bot-reply">
