@@ -37,7 +37,7 @@ export default function ChatBox({ userInput }) {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div className="">
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.role}`}>
@@ -45,7 +45,7 @@ export default function ChatBox({ userInput }) {
           </div>
         ))}
       </div>
-      <h3>
+      <h3 className="text-center">
         It looks like you are looking for information about {userInput}. Can I
         help with that?
       </h3>

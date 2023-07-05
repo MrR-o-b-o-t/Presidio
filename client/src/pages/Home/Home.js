@@ -15,19 +15,15 @@ export default function Home() {
     setUserInput(criteria);
   };
 
-  // useEffect(() => {
-  //   console.log(searchResults);
-  // }, [searchResults]);
-
   return (
     <div className="container-fluid mt-5">
       <div className="text-center">
         <h1>Welcome to the Search App!</h1>
         <p>Enter a topic to search for information.</p>
       </div>
+      {dataAvailable && <ChatBox userInput={userInput} />}
       <SearchForm updateSearchResults={updateSearchResults} />
       <ResultsTable searchResults={searchResults} />
-      {dataAvailable && <ChatBox userInput={userInput} />}
     </div>
   );
 }
