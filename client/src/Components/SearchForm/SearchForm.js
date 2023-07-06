@@ -6,9 +6,7 @@ export default function SearchForm(props) {
 
   const fetchSearchResults = async (query) => {
     try {
-      const response = await axios.get(
-        `https://jolly-hill-0c70d8310.3.azurestaticapps.net/api/search/${query}`
-      );
+      const response = await axios.get(`/api/search/${query}`);
       return response.data;
     } catch (error) {
       console.error("Error fetching search results:", error);
