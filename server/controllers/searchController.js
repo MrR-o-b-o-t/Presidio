@@ -2,7 +2,6 @@ const axios = require("axios");
 
 const search = async (req, res) => {
   const { query } = req.params;
-  console.log(`Request params from searchController: ${req.params}`);
 
   try {
     const apiKey = process.env.BING_API_KEY;

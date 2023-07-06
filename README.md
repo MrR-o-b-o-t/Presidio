@@ -24,11 +24,15 @@ To run the DevDiscovery Search App locally, follow these steps:
 
 4. Configure the environment variables:
 
-- Create a `.env` file in the root directory.
+- Create a `.env` file in the root directories of client and server.
 - Add the following environment variables with your API keys:
+
   ```
+  In clients .env file;
   REACT_APP_ORG=your_bing_api_key
   REACT_APP_CHAT_API_KEY=your_openai_api_key
+
+  In servers .env file;
   BING_API_KEY=your_bing_api_key
   ```
 
