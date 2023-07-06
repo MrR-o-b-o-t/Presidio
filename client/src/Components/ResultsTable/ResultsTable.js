@@ -4,7 +4,6 @@ import "./ResultsTable.scss";
 
 export default function ResultsTable(props) {
   const webPages = props.searchResults.webPages?.value;
-  console.log(webPages);
   return (
     <>
       {!webPages || webPages.length === 0 ? (
