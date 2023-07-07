@@ -42,14 +42,10 @@ export default function ChatBox({ userInput }) {
           onChange={(e) => setInputText(e.target.value)}
           placeholder="Type your message..."
         />
+        <button className="btn btn-primary mt-3" type="submit">
+          Send
+        </button>
       </form>
-      <button
-        className="btn btn-primary mt-3"
-        type="submit"
-        onSubmit={handleMessageSubmit}
-      >
-        Send
-      </button>
       <div className="chat-bot-reply">
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.role}`}>

@@ -6,7 +6,9 @@ export default function SearchForm(props) {
 
   const fetchSearchResults = async (query) => {
     try {
-      const response = await axios.get(`/api/search/${query}`);
+      const response = await axios.get(
+        `http://localhost:5000/api/search/${query}`
+      );
       return response.data;
     } catch (error) {
       console.error("Error fetching search results:", error);
@@ -36,7 +38,11 @@ export default function SearchForm(props) {
             }}
           />
         </div>
-        <button type="submit" className="btn btn-primary mt-3">
+        <button
+          type="submit"
+          className="btn btn-primary mt-3"
+          onSubmit={handleFormSubmit}
+        >
           Search
         </button>
       </form>
