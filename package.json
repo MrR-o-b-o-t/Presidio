@@ -10,6 +10,7 @@
     "node-sass": "^9.0.0"
   },
   "scripts": {
-    "start": "npm run start --prefix server"
+    "start": "npm run start --prefix server",
+    "heroku-prebuild": "npm i && npm i --prefix client && npm run build --prefix client"
   }
 }
