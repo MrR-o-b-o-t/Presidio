@@ -10,7 +10,7 @@ app.use(cors());
 const publicPath = path.join(__dirname, "../client/build");
 app.use(express.static(publicPath));
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 
 app.get("/api/search/:query", searchController.search);
 
