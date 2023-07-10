@@ -37,9 +37,11 @@ To run the DevDiscovery Search App locally, follow these steps:
   ```
 
 5. Run the application:
+   Cd to the 'client' folder
+   Run 'npm run start'
 
-6. Access the application in your browser:
-   Open your browser and navigate to `http://localhost:3000`.
+7. Access the application in your browser:
+   Open your browser and navigate to `http://localhost:5000`.
 
 ## Contributing
 
