@@ -2,6 +2,10 @@
 
 The DevDiscovery Search App is a web application designed to help software developers search for information related to programming topics. It utilizes the Bing Search API to fetch search results and presents them in a user-friendly table format. Additionally, it incorporates an AI-powered chatbot powered by OpenAI's GPT-3.5 Turbo model to provide interactive conversational assistance.
 
+## See it live here
+
+https://devdiscovery-89baa5c13006.herokuapp.com/
+
 ## Features
 
 - Search functionality: Enter a topic or query to fetch relevant search results from the Bing Search API.
